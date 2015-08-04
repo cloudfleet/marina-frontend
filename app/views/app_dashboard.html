@@ -24,17 +24,29 @@
             <!-- info -->
             <div class="row">
 
-                <!-- info unread email -->
                 <div class="col-md-6 p-l-xs p-r-xs">
                     <div class="panel b-a">
                         <div class="panel-heading b-b b-light">
+                          <h3 class="panel-title">Repositories</h3>
                         </div>
-                        <div>
-                        </div>
-
+                        <table class="table">
+                          <tr>
+                            <th>Status</th>
+                            <th>Name</th>
+                            <th>Last build</th>
+                            <th>Last successful build</th>
+                            <th>Details</th>
+                          <tr>
+                          <tr ng-repeat="repository in repositories">
+                            <td><span class="label label-{{statusBadgeClass(repository)}}">&nbsp;</span></td>
+                            <td>{{repository.name}}</td>
+                            <td>{{lastBuild(repository).end_time}}</td>
+                            <td>{{lastSuccessfulBuild(repository).end_time}}</td>
+                            <td><a href="/app/repos/{{repository.name}}">Details...</a></td>
+                          </tr>
+                        </table>
                     </div>
                 </div>
-                <!-- / info unread email -->
 
                 <!-- info stats -->
                 <div class="col-md-6 p-l-xs p-r-xs">
