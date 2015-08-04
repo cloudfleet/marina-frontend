@@ -20,7 +20,7 @@ module.exports = function (grunt) {
     app: require('./bower.json').appPath || 'app',
     dist: 'dist',
     raw: '.raw',
-    repo: 'git@github.com:cloudfleet/blimp-cockpit.git',
+    repo: 'git@github.com:cloudfleet/marina-frontend.git',
     repo_branch: 'production'
   };
 
