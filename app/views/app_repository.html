@@ -23,17 +23,37 @@
             <!-- info -->
             <div class="row">
 
-                <div class="col-md-12 p-l-xs p-r-xs">
+                <div class="col-md-4 p-l-xs p-r-xs">
                     <div class="panel b-a">
                         <div class="panel-heading b-b b-light">
                           <h2 class="panel-title">Repository Data</h2>
                         </div>
-                        <div class="panel-body">
-                        <div>
-                          <div class="panel-heading b-b b-light">
-                            <h3 class="panel-title">Builds</h3>
-                          </div>
-                        <table class="table">
+                        <table class="table table-striped">
+                          <tr>
+                            <th>Dockerfile Path</th>
+                            <td>{{repository.dockerfile_path}}</td>
+                          </tr>
+                          <tr>
+                            <th>Git URL</th>
+                            <td>{{repository.git_url}}</td>
+                          </tr>
+                          <tr>
+                            <th>Git Branch</th>
+                            <td>{{repository.git_branch}}</td>
+                          </tr>
+                          <tr>
+                            <th>Image Tag</th>
+                            <td>{{repository.image_tag}}</td>
+                          </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-12 p-l-xs p-r-xs">
+                    <div class="panel b-a">
+                        <div class="panel-heading b-b b-light">
+                          <h3 class="panel-title">Builds</h3>
+                        </div>
+                        <table class="table table-striped">
                           <tr>
                             <th>Status</th>
                             <th>ID</th>
