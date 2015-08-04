@@ -8,8 +8,8 @@
  * Service in the marinaFrontendApp.
  */
 angular.module('marinaFrontendApp')
-  .factory('marinaApi', ['$resource', '$http', '$q', '$rootScope', '$state', '$localstorage',
-    function ($resource, $http, $q, $rootScope, $state, $localstorage) {
+  .factory('marinaApi', ['$resource', '$http', '$q', '$rootScope', '$state',
+    function ($resource, $http, $q, $rootScope, $state) {
 
       var localStorageBuildlogsKeyPrefix = 'marina.builds.logs.';
 
