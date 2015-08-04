@@ -1,18 +1,17 @@
-<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="DashboardCtrl">
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="RepositoryCtrl">
     <!-- main -->
     <div class="col">
         <!-- main header -->
         <div class="bg-light lter b-b wrapper-md">
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
-                    <h1 class="m-n font-thin h3 text-black">Marina</h1>
-                    <small class="text-muted">Welcome to your Marina dashboard!</small>
+                    <h1 class="m-n font-thin h3 text-black">{{repository.name}}</h1>
                 </div>
                 <div class="col-sm-6 text-right hidden-xs">
 
                     <div class="inline text-left">
                         <div class="m-b-xs"><i class="fa fa-btc"></i>
-                            30,000 <span class="text-muted">successful builds</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -27,22 +26,27 @@
                 <div class="col-md-12 p-l-xs p-r-xs">
                     <div class="panel b-a">
                         <div class="panel-heading b-b b-light">
-                          <h2 class="panel-title">Repositories</h2>
+                          <h2 class="panel-title">Repository Data</h2>
                         </div>
+                        <div class="panel-body">
+                        <div>
+                          <div class="panel-heading b-b b-light">
+                            <h3 class="panel-title">Builds</h3>
+                          </div>
                         <table class="table">
                           <tr>
                             <th>Status</th>
-                            <th>Name</th>
-                            <th>Last build</th>
-                            <th>Last successful build</th>
-                            <th>Details</th>
+                            <th>ID</th>
+                            <th>Start</th>
+                            <th>End</th>
+                            <th>Logs</th>
                           <tr>
-                          <tr ng-repeat="repository in repositories">
-                            <td><span class="label label-{{lastBuild | statusBadgeClass}}">&nbsp;</span></td>
-                            <td>{{repository.name}}</td>
-                            <td>{{lastBuild(repository).end_time}}</td>
-                            <td>{{lastSuccessfulBuild(repository).end_time}}</td>
-                            <td><a href="/app/repos/{{repository.name}}">Details...</a></td>
+                          <tr ng-repeat="build in repository.builds | orderBy:'-end_time'">
+                            <td><span class="label label-{{build | statusBadgeClass}}">&nbsp;</span></td>
+                            <td>{{build.id}}</td>
+                            <td>{{build.start_time}}</td>
+                            <td>{{build.end_time}}</td>
+                            <td><a href="/app/repos/{{repository.name}}/builds/{{build.id}}/logs">Logs</a></td>
                           </tr>
                         </table>
                     </div>

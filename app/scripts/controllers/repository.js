@@ -2,24 +2,27 @@
 
 /**
  * @ngdoc function
- * @name marinaFrontendApp.controller:DashboardCtrl
+ * @name marinaFrontendApp.controller:RepositoryCtrl
  * @description
- * # DashboardCtrl
+ * # RepositoryCtrl
  * Controller of the marinaFrontendApp
  */
 angular.module('marinaFrontendApp')
-  .controller('DashboardCtrl',
-  [ '$scope', 'marinaApi',
-    function ($scope, marinaApi) {
-      console.log('Creating dashboard scope');
+  .controller('RepositoryCtrl',
+  [ '$scope', '$stateParams','marinaApi',
+    function ($scope, $stateParams, marinaApi) {
 
-      marinaApi.getRepositories().then(function(data){
-        $scope.repositories = data;
+      var repository_full_name = $stateParams.owner + "/" + $stateParams.name;
+
+      console.log('Creating scope');
+
+      marinaApi.getRepository(repository_full_name).then(function(data){
+        $scope.repository = data;
       });
 
-      $scope.lastBuild = function(repository) {
-        if(repository["builds"]) {
-          return repository["builds"]
+      $scope.lastBuild = function() {
+        if($scope.repository["builds"]) {
+          return $scope.repository["builds"]
             .sort(function(b1, b2) {
               if(b1.end_time == b2.end_time)
               {
@@ -35,8 +38,8 @@ angular.module('marinaFrontendApp')
       };
 
       $scope.lastSuccessfulBuild = function(repository) {
-        if(repository["builds"]) {
-          return repository["builds"]
+        if($scope.repository["builds"]) {
+          return $scope.repository["builds"]
             .filter(function(b){return b.success;})
             .sort(function(b1, b2) {
               if(b1.end_time == b2.end_time)

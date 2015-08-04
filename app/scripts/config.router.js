@@ -33,6 +33,14 @@ angular.module('marinaFrontendApp')
           url: '/dashboard',
           templateUrl: 'views/app_dashboard.html'
         })
+        .state('app.repository', {
+          url: '/repos/:owner/:name',
+          templateUrl: 'views/app_repository.html'
+        })
+        .state('app.repository_build_logs', {
+          url: '/repos/:owner/:name/builds/:build_id/logs',
+          templateUrl: 'views/app_repository_build_logs.html'
+        })
     }
   ]
 );

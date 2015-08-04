@@ -13,4 +13,22 @@ angular.module('marinaFrontendApp')
     return function (date) {
       return moment(date).fromNow();
     };
+  })
+  .filter('statusBadgeClass', function () {
+    return function (build) {
+      if(build)
+      {
+        if(build.success)
+        {
+          return "success";
+        }
+        else {
+          return "danger";
+        }
+      }
+      else {
+        return "warning";
+      }
+
+    };
   });
