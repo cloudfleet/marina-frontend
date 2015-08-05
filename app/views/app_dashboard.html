@@ -37,7 +37,7 @@
                             <th>Last successful build</th>
                             <th>Details</th>
                           <tr>
-                          <tr ng-repeat="repository in repositories">
+                          <tr ng-repeat="repository in repositories | orderBy:'name'">
                             <td><span class="label label-{{lastBuild(repository) | statusBadgeClass}}">&nbsp;</span></td>
                             <td>{{repository.name}}</td>
                             <td>{{lastBuild(repository).end_time}}</td>

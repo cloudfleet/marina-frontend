@@ -25,6 +25,14 @@ angular.module('marinaFrontendApp')
               {
                 return 0;
               }
+              if(!b1.end_time)
+              {
+                return 1;
+              }
+              if(!b2.end_time)
+              {
+                return -1
+              }
               return b1.end_time < b2.end_time ? 1 : -1;
             })
             [0]
