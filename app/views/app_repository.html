@@ -5,7 +5,7 @@
         <div class="bg-light lter b-b wrapper-md">
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
-                    <h1 class="m-n font-thin h3 text-black">{{repository.name}}</h1>
+                    <h1 class="m-n font-thin h3 text-black">{{repository.owner_name}}/{{repository.name}}</h1>
                 </div>
                 <div class="col-sm-6 text-right hidden-xs">
 
@@ -30,20 +30,8 @@
                         </div>
                         <table class="table table-striped">
                           <tr>
-                            <th>Dockerfile Path</th>
-                            <td>{{repository.dockerfile_path}}</td>
-                          </tr>
-                          <tr>
                             <th>Git URL</th>
-                            <td>{{repository.git_url}}</td>
-                          </tr>
-                          <tr>
-                            <th>Git Branch</th>
-                            <td>{{repository.git_branch}}</td>
-                          </tr>
-                          <tr>
-                            <th>Image Tag</th>
-                            <td>{{repository.image_tag}}</td>
+                            <td>{{repository.source_code_url}}</td>
                           </tr>
                         </table>
                     </div>
@@ -61,12 +49,12 @@
                             <th>End</th>
                             <th>Logs</th>
                           <tr>
-                          <tr ng-repeat="build in repository.builds | orderBy:'-end_time'">
-                            <td><span class="label label-{{build | statusBadgeClass}}">&nbsp;</span></td>
+                          <tr ng-repeat="build in repository.builds | orderBy:'-end'">
+                            <td><span class="label label-{{build | statusBadgeClass}}">{{build.state}}</span></td>
                             <td>{{build.id}}</td>
-                            <td>{{build.start_time}}</td>
-                            <td>{{build.end_time}}</td>
-                            <td><a href="/app/repos/{{repository.name}}/builds/{{build.id}}/logs">Logs</a></td>
+                            <td>{{build.start}}</td>
+                            <td>{{build.end}}</td>
+                            <td><a href="/app/repos/{{repository.owner_name}}/{{repository.name}}/builds/{{build.id}}/logs">Logs</a></td>
                           </tr>
                         </table>
                     </div>

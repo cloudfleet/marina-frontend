@@ -24,11 +24,11 @@ angular.module('marinaFrontendApp')
         if($scope.repository["builds"]) {
           return $scope.repository["builds"]
             .sort(function(b1, b2) {
-              if(b1.end_time == b2.end_time)
+              if(b1.end == b2.end)
               {
                 return 0;
               }
-              return b1.end_time < b2.end_time ? 1 : -1;
+              return b1.end < b2.end ? 1 : -1;
             })
             [0]
         }
@@ -40,13 +40,13 @@ angular.module('marinaFrontendApp')
       $scope.lastSuccessfulBuild = function(repository) {
         if($scope.repository["builds"]) {
           return $scope.repository["builds"]
-            .filter(function(b){return b.success;})
+            .filter(function(b){return b.state == "success";})
             .sort(function(b1, b2) {
-              if(b1.end_time == b2.end_time)
+              if(b1.end == b2.end)
               {
                 return 0;
               }
-              return b1.end_time < b2.end_time ? 1 : -1;
+              return b1.end < b2.end ? 1 : -1;
             })
             [0]
         }

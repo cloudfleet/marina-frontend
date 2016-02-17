@@ -24,10 +24,11 @@ angular.module('marinaFrontendApp')
         .state('app', {
           abstract: true,
           url: '/app',
-          templateUrl: 'views/app.html',
-          data: {
-            requireLogin: true
-          }
+          templateUrl: 'views/app.html'
+        })
+        .state('app.register', {
+          url: '/register',
+          templateUrl: 'views/app_register.html'
         })
         .state('app.dashboard', {
           url: '/dashboard',

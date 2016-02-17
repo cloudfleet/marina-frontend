@@ -13,5 +13,6 @@ angular
     'ngResource',
     'ngSanitize',
     'ui.router',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ng-token-auth'
   ]);
