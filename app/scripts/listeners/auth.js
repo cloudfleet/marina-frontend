@@ -8,11 +8,10 @@
  */
 angular.module('marinaFrontendApp')
     .run(
-    ['$rootScope', '$auth', '$location',
-        function ($rootScope, $auth, $location) {
+    ['$rootScope', '$auth', '$state',
+        function ($rootScope, $auth, $state) {
           $rootScope.$on('auth:login-success', function(ev, user) {
-              $rootScope.currentUser = user;
-              $location.path('/dashboard');
+              $state.go('app.dashboard');
           });
 
           $rootScope.$on('auth:login-error', function(ev, reason) {
@@ -20,7 +19,15 @@ angular.module('marinaFrontendApp')
           });
 
           $rootScope.$on('auth:logout-success', function(ev) {
-              $location.path('/');
+              $state.go('index');
+          });
+
+          $rootScope.$on('auth:registration-email-success', function(ev, message) {
+              alert("A registration email was sent to " + message.email);
+              $state.go('index');
+          });
+          $rootScope.$on('auth:registration-email-error', function(ev, message) {
+              alert("Registration failed: " + reason.errors[0]);
           });
         }
     ]);

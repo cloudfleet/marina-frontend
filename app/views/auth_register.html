@@ -1,4 +1,4 @@
-<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="AuthCtrl">
+<div class="hbox hbox-auto-xs hbox-auto-sm">
   <div class="col">
     <div class="row">
       <div class="wrapper-md">
@@ -7,7 +7,7 @@
           <form ng-submit="submitRegistration(registrationForm)" role="form" ng-init="registrationForm = {}">
             <div class="form-group">
               <label>username</label>
-              <input type="text" name="username" ng-model="registrationForm.username" required="required" class="form-control"/>
+              <input type="text" name="username" ng-model="registrationForm.name" required="required" class="form-control"/>
             </div>
 
             <div class="form-group">

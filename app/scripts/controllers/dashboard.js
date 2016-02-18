@@ -11,7 +11,6 @@ angular.module('marinaFrontendApp')
   .controller('DashboardCtrl',
   [ '$scope', 'marinaApi',
     function ($scope, marinaApi) {
-      console.log('Creating dashboard scope');
 
       marinaApi.getRepositories().then(function(data){
         $scope.repositories = data;

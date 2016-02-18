@@ -25,12 +25,6 @@ angular
       isSmartDevice($window) && angular.element($window.document.body).addClass('smart');
 
 
-      /*$auth.validateUser()
-        .then(function(data)
-      {
-        $scope.currentUser = data;
-      });
-      */
       // config
       $scope.app = {
         name: 'Floating Dock',
