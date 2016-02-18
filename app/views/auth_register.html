@@ -1,0 +1,34 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="AuthCtrl">
+  <div class="col">
+    <div class="row">
+      <div class="wrapper-md">
+        <div class="col-md-12">
+
+          <form ng-submit="submitRegistration(registrationForm)" role="form" ng-init="registrationForm = {}">
+            <div class="form-group">
+              <label>username</label>
+              <input type="text" name="username" ng-model="registrationForm.username" required="required" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+              <label>email</label>
+              <input type="email" name="email" ng-model="registrationForm.email" required="required" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+              <label>password</label>
+              <input type="password" name="password" ng-model="registrationForm.password" required="required" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+              <label>password confirmation</label>
+              <input type="password" name="password_confirmation" ng-model="registrationForm.password_confirmation" required="required" class="form-control"/>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,8 +9,8 @@
  */
 angular
   .module('marinaFrontendApp')
-  .controller('AppCtrl', ['$scope', '$window',
-    function ($scope, $window) {
+  .controller('AppCtrl', ['$scope', '$window', '$auth',
+    function ($scope, $window, $auth) {
 
       function isSmartDevice($window) {
         // Adapted from http://www.detectmobilebrowsers.com
@@ -24,14 +24,16 @@ angular
       isIE && angular.element($window.document.body).addClass('ie');
       isSmartDevice($window) && angular.element($window.document.body).addClass('smart');
 
-      $scope.getCurrentUser = function()
-      {
-        return cockpitApi.getCurrentUser();
-      };
 
+      /*$auth.validateUser()
+        .then(function(data)
+      {
+        $scope.currentUser = data;
+      });
+      */
       // config
       $scope.app = {
-        name: 'cloud fleet',
+        name: 'Floating Dock',
         version: '1.0.1',
         // for chart colors
         color: {

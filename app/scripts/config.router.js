@@ -19,16 +19,21 @@ angular.module('marinaFrontendApp')
   ['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function ($stateProvider, $urlRouterProvider, $locationProvider) {
       $locationProvider.html5Mode(true);
-      $urlRouterProvider.otherwise('/app/dashboard');
+      $urlRouterProvider.otherwise('/');
       $stateProvider
+        .state('index', {
+          url: '/',
+          templateUrl: 'views/index.html'
+        })
         .state('app', {
           abstract: true,
-          url: '/app',
-          templateUrl: 'views/app.html'
-        })
-        .state('app.register', {
-          url: '/register',
-          templateUrl: 'views/app_register.html'
+          url: '',
+          templateUrl: 'views/app.html',
+          resolve: {
+            auth: function($auth) {
+              return $auth.validateUser();
+            }
+          }
         })
         .state('app.dashboard', {
           url: '/dashboard',
@@ -42,6 +47,21 @@ angular.module('marinaFrontendApp')
           url: '/repos/:owner/:name/builds/:build_id/logs',
           templateUrl: 'views/app_repository_build_logs.html'
         })
+        .state('auth', {
+          abstract: true,
+          url: '/auth',
+          templateUrl: 'views/app.html'
+        })
+        .state('auth.register', {
+          url: '/register',
+          templateUrl: 'views/auth_register.html'
+        })
+        .state('auth.login', {
+          url: '/login',
+          templateUrl: 'views/auth_login.html'
+        })
+
+
     }
   ]
 );

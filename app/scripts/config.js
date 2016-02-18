@@ -8,10 +8,13 @@
  */
 angular.module('marinaFrontendApp')
     .config(
-    ['$controllerProvider', '$compileProvider', '$filterProvider', '$provide',
-        function ($controllerProvider, $compileProvider, $filterProvider, $provide) {
+    ['$controllerProvider', '$compileProvider', '$filterProvider', '$provide', '$authProvider',
+        function ($controllerProvider, $compileProvider, $filterProvider, $provide, $authProvider) {
             var app = angular.module('marinaFrontendApp');
             // lazy controller, directive and service
+            $authProvider.configure({
+              apiUrl: '/api/v1'
+            });
             app.controller = $controllerProvider.register;
             app.directive = $compileProvider.directive;
             app.filter = $filterProvider.register;

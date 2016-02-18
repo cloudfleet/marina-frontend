@@ -383,8 +383,6 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
-            'Dockerfile',
-            'nginx-dist.conf', // the production Dockerfile
             '*.html',
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
@@ -398,12 +396,7 @@ module.exports = function (grunt) {
           src: ['generated/*']
         }, {
           expand: true,
-          cwd: '.',
-          src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
-          dest: '<%= yeoman.dist %>'
-        }, {
-          expand: true,
-          cwd: 'bower_components/font-awesome/fonts',
+          cwd: 'bower_components/fontawesome/fonts',
           src: '**',
           dest: '<%= yeoman.dist %>/fonts'
         }, {
