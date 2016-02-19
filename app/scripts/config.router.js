@@ -39,6 +39,18 @@ angular.module('marinaFrontendApp')
           url: '/dashboard',
           templateUrl: 'views/app_dashboard.html'
         })
+        .state('app.profile', {
+          url: '/profile/:id',
+          templateUrl: 'views/app_profile.html',
+          controller: 'ProfileCtrl',
+          resolve: {
+            profile_user: ['marinaApi', '$stateParams',
+              function(marinaApi, $stateParams) {
+                return marinaApi.User.get({id: $stateParams.id});
+              }
+            ]
+          }
+        })
         .state('app.repository', {
           url: '/repos/:owner/:name',
           templateUrl: 'views/app_repository.html'

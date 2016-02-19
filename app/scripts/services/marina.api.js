@@ -15,6 +15,8 @@ angular.module('marinaFrontendApp')
 
       var service = {
 
+        User: $resource('/api/v1/users/:id', {id:'@id'}),
+
         getRepositories: function () {
 
           var deferred = $q.defer();
