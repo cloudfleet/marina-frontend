@@ -14,5 +14,6 @@ angular
     'ngSanitize',
     'ui.router',
     'ui.bootstrap',
+    'rails.resource',
     'ng-token-auth'
   ]);

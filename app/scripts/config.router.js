@@ -75,6 +75,18 @@ angular.module('marinaFrontendApp')
             ]
           }
         })
+        .state('app.repository_new', {
+          url: '/repos/new',
+          templateUrl: 'views/app_repository_form.html',
+          controller: 'RepositoryCtrl',
+          resolve: {
+            repository: ['marinaApi',
+              function(marinaApi) {
+                return new marinaApi.Repository;
+              }
+            ]
+          }
+        })
         .state('app.repository_build_logs', {
           url: '/repos/:owner/:name/builds/:build_id/logs',
           templateUrl: 'views/app_repository_build_logs.html'

@@ -28,8 +28,8 @@
 
   <!-- nabar right -->
   <ul class="nav navbar-nav navbar-right">
-    <li>
-      <a ui-sref="app.repository_new"
+    <li ng-if="user">
+      <a ui-sref="app.repository_new"><i class="fa fa-plus"></i>&nbsp;Create Automatic Build</a>
     </li>
     <li class="dropdown" dropdown>
       <!-- dropdown -->

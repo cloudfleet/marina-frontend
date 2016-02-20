@@ -8,7 +8,7 @@
  * Service in the marinaFrontendApp.
  */
 angular.module('marinaFrontendApp')
-  .factory('marinaApi', ['$resource', '$http', '$q', '$rootScope', '$state',
+  .factory('marinaApi', ['Resource', '$http', '$q', '$rootScope', '$state',
     function ($resource, $http, $q, $rootScope, $state) {
 
       var localStorageBuildlogsKeyPrefix = 'marina.builds.logs.';
@@ -17,14 +17,13 @@ angular.module('marinaFrontendApp')
 
         User: $resource(
           '/api/v1/users/:id',
-          {id:'@id'},
-          {'update': {method:'PUT'}}
+          {id:'@id'}
         ),
 
         Repository: $resource(
           '/api/v1/repos/:namespace/:name',
           {namespace: '@owner_name', name: '@name'},
-          {'update': {method:'PUT'}}
+          {create: {url: '/api/v1/repos', method: 'POST'}}
         ),
 
         getRepositories: function () {

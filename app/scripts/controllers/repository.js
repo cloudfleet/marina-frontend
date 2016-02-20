@@ -9,8 +9,8 @@
  */
 angular.module('marinaFrontendApp')
   .controller('RepositoryCtrl',
-  [ '$scope', '$stateParams','repository',
-    function ($scope, $stateParams, repository) {
+  [ '$scope', '$stateParams', '$state','repository',
+    function ($scope, $stateParams, $state, repository) {
 
       $scope.repository = repository;
       console.log(repository);
@@ -65,7 +65,9 @@ angular.module('marinaFrontendApp')
       };
       $scope.save = function()
       {
-        $scope.repository.$update();
+        $scope.repository.$save(function() {
+          $state.go("app.repository", {owner: $scope.repository.owner_name, name: $scope.repository.name});
+        });
       };
 
   }]);
