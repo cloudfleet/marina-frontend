@@ -53,7 +53,27 @@ angular.module('marinaFrontendApp')
         })
         .state('app.repository', {
           url: '/repos/:owner/:name',
-          templateUrl: 'views/app_repository.html'
+          templateUrl: 'views/app_repository.html',
+          controller: 'RepositoryCtrl',
+          resolve: {
+            repository: ['marinaApi', '$stateParams',
+              function(marinaApi, $stateParams) {
+                return marinaApi.getRepository($stateParams.owner + '/' + $stateParams.name);
+              }
+            ]
+          }
+        })
+        .state('app.repository_edit', {
+          url: '/repos/:owner/:name/edit',
+          templateUrl: 'views/app_repository_form.html',
+          controller: 'RepositoryCtrl',
+          resolve: {
+            repository: ['marinaApi', '$stateParams',
+              function(marinaApi, $stateParams) {
+                return marinaApi.getRepository($stateParams.owner + '/' + $stateParams.name);
+              }
+            ]
+          }
         })
         .state('app.repository_build_logs', {
           url: '/repos/:owner/:name/builds/:build_id/logs',

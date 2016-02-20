@@ -9,16 +9,10 @@
  */
 angular.module('marinaFrontendApp')
   .controller('RepositoryCtrl',
-  [ '$scope', '$stateParams','marinaApi',
-    function ($scope, $stateParams, marinaApi) {
+  [ '$scope', '$stateParams','repository',
+    function ($scope, $stateParams, repository) {
 
-      var repository_full_name = $stateParams.owner + "/" + $stateParams.name;
-
-      console.log('Creating scope');
-
-      marinaApi.getRepository(repository_full_name).then(function(data){
-        $scope.repository = data;
-      });
+      $scope.repository = repository;
 
       $scope.lastBuild = function() {
         if($scope.repository["builds"]) {
@@ -54,5 +48,19 @@ angular.module('marinaFrontendApp')
           return null;
         }
       };
+
+      $scope.addRepositoryTag = function()
+      {
+        $scope.repository.repository_tags.push(
+          {
+            docker_file_path: "/",
+            name: "latest",
+            reference: "master"
+          });
+      }
+      $scope.removeRepositoryTag = function(index)
+      {
+        $scope.repository.repository_tags.splice(index, 1);
+      }
 
   }]);

@@ -17,9 +17,11 @@
             <div class="row">
 
                 <div class="col-md-12 p-l-xs p-r-xs">
-                    <div class="panel b-a">
-                      {{profile_user.name}}
-                    </div>
+                    <h3>Organizations</h3>
+                    <p ng-repeat="organization in profile_user.organizations">
+                      {{organization.name}} ({{organization.role}})
+                    </p>
+                    <p><a ui-sref="app.organization_new">Create Organization</a></p>
                 </div>
 
                 <!-- info stats -->
