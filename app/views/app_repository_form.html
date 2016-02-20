@@ -69,7 +69,7 @@
                       <div class="panel-heading b-b b-light">
                         <h2 class="panel-title">Repository Tags</h2>
                       </div>
-                      <div class="panel-body b-b b-light" ng-repeat="tag in repository.repository_tags">
+                      <div class="panel-body b-b b-light" ng-repeat="tag in repository.repository_tags" ng-if="!tag._destroy">
                         <form role="form">
 
                           <div class="form-group">

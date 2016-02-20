@@ -58,7 +58,7 @@ angular.module('marinaFrontendApp')
           resolve: {
             repository: ['marinaApi', '$stateParams',
               function(marinaApi, $stateParams) {
-                return marinaApi.getRepository($stateParams.owner + '/' + $stateParams.name);
+                return marinaApi.Repository.get({namespace: $stateParams.owner,  name: $stateParams.name});
               }
             ]
           }
@@ -70,7 +70,7 @@ angular.module('marinaFrontendApp')
           resolve: {
             repository: ['marinaApi', '$stateParams',
               function(marinaApi, $stateParams) {
-                return marinaApi.getRepository($stateParams.owner + '/' + $stateParams.name);
+                return marinaApi.Repository.get({namespace: $stateParams.owner,  name: $stateParams.name});
               }
             ]
           }

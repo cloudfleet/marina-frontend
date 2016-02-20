@@ -15,7 +15,17 @@ angular.module('marinaFrontendApp')
 
       var service = {
 
-        User: $resource('/api/v1/users/:id', {id:'@id'}),
+        User: $resource(
+          '/api/v1/users/:id',
+          {id:'@id'},
+          {'update': {method:'PUT'}}
+        ),
+
+        Repository: $resource(
+          '/api/v1/repos/:namespace/:name',
+          {namespace: '@owner_name', name: '@name'},
+          {'update': {method:'PUT'}}
+        ),
 
         getRepositories: function () {
 
@@ -24,19 +34,6 @@ angular.module('marinaFrontendApp')
           $http.get('/api/v1/repos/').
             success(function (data) {
               deferred.resolve(data.repositories);
-            }).
-            error(function () {
-              deferred.resolve(null);
-            });
-          return deferred.promise;
-        },
-        getRepository: function (full_name) {
-
-          var deferred = $q.defer();
-
-          $http.get('/api/v1/repos/' + full_name).
-            success(function (data) {
-              deferred.resolve(data);
             }).
             error(function () {
               deferred.resolve(null);

@@ -13,6 +13,7 @@ angular.module('marinaFrontendApp')
     function ($scope, $stateParams, repository) {
 
       $scope.repository = repository;
+      console.log(repository);
 
       $scope.lastBuild = function() {
         if($scope.repository["builds"]) {
@@ -57,10 +58,14 @@ angular.module('marinaFrontendApp')
             name: "latest",
             reference: "master"
           });
-      }
+      };
       $scope.removeRepositoryTag = function(index)
       {
-        $scope.repository.repository_tags.splice(index, 1);
-      }
+        $scope.repository.repository_tags[index]['_destroy'] = 1;
+      };
+      $scope.save = function()
+      {
+        $scope.repository.$update();
+      };
 
   }]);
