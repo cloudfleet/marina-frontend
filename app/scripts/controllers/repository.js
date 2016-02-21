@@ -50,6 +50,10 @@ angular.module('marinaFrontendApp')
         }
       };
 
+      $scope.canEdit = function()
+      {
+        return _.includes($scope.globals.availableNamespaces(), $scope.repository.owner_name);
+      };
       $scope.addRepositoryTag = function()
       {
         $scope.repository.repository_tags.push(
