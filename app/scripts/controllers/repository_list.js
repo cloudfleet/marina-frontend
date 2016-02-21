@@ -8,8 +8,12 @@
  * Controller of the marinaFrontendApp
  */
 angular.module('marinaFrontendApp')
-  .controller('DashboardCtrl',
-  [ '$scope', '$stateParams', 'dashboard_data',
-    function ($scope, $stateParams, dashboard_data) {
-      $scope.dashboard_data = dashboard_data;
+  .controller('RepositoryListCtrl',
+  [ '$scope', 'repositoryList',
+    function ($scope, repositoryList) {
+
+      $scope.repositories = repositoryList;
+      console.log($scope.repositories);
+
+
   }]);

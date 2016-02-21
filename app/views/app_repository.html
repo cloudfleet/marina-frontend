@@ -5,7 +5,7 @@
         <div class="bg-light lter b-b wrapper-md">
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
-                    <h1 class="m-n font-thin h3 text-black">{{repository.owner_name}}/{{repository.name}}</h1>
+                    <h1 class="m-n font-thin h3 text-black"><a ui-sref="app.repository_list({owner: repository.owner_name})">{{repository.owner_name}}</a>/{{repository.name}}</h1>
                 </div>
                 <div class="col-sm-6 text-right hidden-xs">
 
@@ -28,7 +28,7 @@
             <!-- info -->
             <div class="row">
 
-                <div class="col-md-4 p-l-xs p-r-xs">
+                <div class="col-md-6 p-l-xs p-r-xs">
                     <div class="panel b-a">
                         <div class="panel-heading b-b b-light">
                           <h2 class="panel-title">Repository Data</h2>
@@ -41,7 +41,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-md-12 p-l-xs p-r-xs">
+                <div class="col-md-6 p-l-xs p-r-xs">
                     <div class="panel b-a">
                         <div class="panel-heading b-b b-light">
                           <h3 class="panel-title">Builds</h3>
@@ -54,11 +54,11 @@
                             <th>End</th>
                             <th>Logs</th>
                           <tr>
-                          <tr ng-repeat="build in repository.builds | orderBy:'-start'">
+                          <tr ng-repeat="build in repository.builds | orderBy:'-end'">
                             <td><span class="label label-{{build | statusBadgeClass}}">{{build.state}}</span></td>
                             <td>{{build.id}}</td>
-                            <td>{{build.start}}</td>
-                            <td>{{build.end}}</td>
+                            <td><span am-time-ago="build.start"></span></td>
+                            <td><span am-time-ago="build.end"></span></td>
                             <td><a href="/repos/{{repository.owner_name}}/{{repository.name}}/builds/{{build.id}}/logs">Logs</a></td>
                           </tr>
                         </table>

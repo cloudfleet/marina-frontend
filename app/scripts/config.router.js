@@ -37,7 +37,15 @@ angular.module('marinaFrontendApp')
         })
         .state('app.dashboard', {
           url: '/dashboard',
-          templateUrl: 'views/app_dashboard.html'
+          templateUrl: 'views/app_dashboard.html',
+          controller: 'DashboardCtrl',
+          resolve: {
+            dashboard_data: ['marinaApi',
+              function(marinaApi) {
+                return marinaApi.Dashboard.get();
+              }
+            ]
+          }
         })
         .state('app.profile', {
           url: '/profile/:id',
@@ -59,6 +67,18 @@ angular.module('marinaFrontendApp')
             repository: ['marinaApi', '$stateParams',
               function(marinaApi, $stateParams) {
                 return marinaApi.Repository.get({namespace: $stateParams.owner,  name: $stateParams.name});
+              }
+            ]
+          }
+        })
+        .state('app.repository_list', {
+          url: '/repos/:owner',
+          templateUrl: 'views/app_repository_list.html',
+          controller: 'RepositoryListCtrl',
+          resolve: {
+            repositoryList: ['marinaApi', '$stateParams',
+              function(marinaApi, $stateParams) {
+                return marinaApi.Repository.query({namespace: $stateParams.owner});
               }
             ]
           }

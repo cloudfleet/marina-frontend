@@ -15,5 +15,6 @@ angular
     'ui.router',
     'ui.bootstrap',
     'rails.resource',
-    'ng-token-auth'
+    'ng-token-auth',
+    'angularMoment'
   ]);

@@ -1,4 +1,4 @@
-<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="DashboardCtrl">
+<div class="hbox hbox-auto-xs hbox-auto-sm">
     <!-- main -->
     <div class="col">
         <!-- main header -->
@@ -11,8 +11,8 @@
                 <div class="col-sm-6 text-right hidden-xs">
 
                     <div class="inline text-left">
-                        <div class="m-b-xs">
-                            30,000 <span class="text-muted">successful builds</span></div>
+                        <!--div class="m-b-xs">
+                            30,000 <span class="text-muted">successful builds</span></div-->
                     </div>
                 </div>
             </div>
@@ -24,34 +24,24 @@
             <!-- info -->
             <div class="row">
 
-                <div class="col-md-12 p-l-xs p-r-xs">
+                <div class="col-md-6 p-l-xs p-r-xs" ng-repeat="(namespace, stats) in dashboard_data">
                     <div class="panel b-a">
                         <div class="panel-heading b-b b-light">
-                          <h2 class="panel-title">Repositories</h2>
+                          <h2 class="panel-title"><a ui-sref='app.repository_list({owner: namespace})'>{{namespace}}</a></h2>
                         </div>
-                        <table class="table">
-                          <tr>
-                            <th>Status</th>
-                            <th>Name</th>
-                            <th>Last build</th>
-                            <th>Last successful build</th>
-                            <th>Details</th>
-                          <tr>
-                          <tr ng-repeat="repository in repositories | orderBy:'name'">
-                            <td><span class="label label-{{lastBuild(repository) | statusBadgeClass}}">&nbsp;</span></td>
-                            <td>{{repository.owner_name}}/{{repository.name}}</td>
-                            <td>{{lastBuild(repository).end}}</td>
-                            <td>{{lastSuccessfulBuild(repository).end}}</td>
-                            <td><a href="/repos/{{repository.owner_name}}/{{repository.name}}">Details...</a></td>
-                          </tr>
-                        </table>
+                        <div class="panel-body b-b b-light">
+                          <p>
+                            <p><strong>Builds</strong></p>
+                            <p>
+                                <span ng-repeat="(label, count) in stats.build_count">{{label}}: {{count}} &nbsp;</span>
+                            </p>
+                          <p>
+                        </div>
+                        <div class="panel-body b-b b-light">
+                        </div>
                     </div>
                 </div>
 
-                <!-- info stats -->
-                <div class="col-md-6 p-l-xs p-r-xs">
-                </div>
-                <!-- / info stats -->
             </div>
             <!-- / info -->
         </div>

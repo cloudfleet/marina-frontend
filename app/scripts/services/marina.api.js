@@ -23,22 +23,15 @@ angular.module('marinaFrontendApp')
         Repository: $resource(
           '/api/v1/repos/:namespace/:name',
           {namespace: '@owner_name', name: '@name'},
-          {create: {url: '/api/v1/repos', method: 'POST'}}
+          {create: {url: '/api/v1/repos', method: 'POST'},
+           query: {url: '/api/v1/repos/:namespace', method: 'GET', isArray: true}
+          }
         ),
 
-        getRepositories: function () {
+        Dashboard: $resource(
+          '/api/v1/dashboard'
+        ),
 
-          var deferred = $q.defer();
-
-          $http.get('/api/v1/repos/').
-            success(function (data) {
-              deferred.resolve(data.repositories);
-            }).
-            error(function () {
-              deferred.resolve(null);
-            });
-          return deferred.promise;
-        },
         getBuildLogs: function (full_name, build_id) {
 
           var deferred = $q.defer();
