@@ -28,17 +28,21 @@
 
   <!-- nabar right -->
   <ul class="nav navbar-nav navbar-right">
-    <li ng-if="user">
-      <a ui-sref="app.repository_new"><i class="fa fa-plus"></i>&nbsp;Create Automatic Build</a>
-    </li>
-    <li class="dropdown" dropdown>
+    <li class="dropdown" dropdown  ng-if="user">
+      <a href class="dropdown-toggle clear" dropdown-toggle>
+              <!--span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                <img src="images/captain.png" alt="...">
+                <i class="on md b-white bottom"></i>
+              </span-->
+        <span class="hidden-sm hidden-md">Create</span> <b class="caret"></b>
+      </a>
       <!-- dropdown -->
       <ul class="dropdown-menu animated fadeInRight w">
         <li>
-          <a href>
-            <span class="badge bg-danger pull-right">47%</span>
-            <span>Settings</span>
-          </a>
+          <a ui-sref="app.repository_new">Automatic Build</a>
+        </li>
+        <li ng-if="user">
+          <a ui-sref="app.organization_new">Organization</a>
         </li>
       </ul>
       <!-- / dropdown -->

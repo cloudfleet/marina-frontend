@@ -20,6 +20,11 @@ angular.module('marinaFrontendApp')
           {id:'@id'}
         ),
 
+        Organization: $resource(
+          '/api/v1/organizations/:id',
+          {id: '@id'}
+        ),
+
         Repository: $resource(
           '/api/v1/repos/:namespace/:name',
           {namespace: '@owner_name', name: '@name'},

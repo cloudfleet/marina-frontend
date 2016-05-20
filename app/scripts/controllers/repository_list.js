@@ -9,9 +9,9 @@
  */
 angular.module('marinaFrontendApp')
   .controller('RepositoryListCtrl',
-  [ '$scope', 'repositoryList',
-    function ($scope, repositoryList) {
-
+  [ '$scope', 'repositoryList', '$stateParams',
+    function ($scope, repositoryList, $stateParams) {
+      $scope.namespace = $stateParams.owner || 'All';
       $scope.repositories = repositoryList;
       console.log($scope.repositories);
 

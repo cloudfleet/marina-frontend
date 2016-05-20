@@ -107,6 +107,30 @@ angular.module('marinaFrontendApp')
             ]
           }
         })
+        .state('app.organization_edit', {
+          url: '/organizations/:id/edit',
+          templateUrl: 'views/app_organization_form.html',
+          controller: 'OrganizationCtrl',
+          resolve: {
+            organization: ['marinaApi', '$stateParams',
+              function(marinaApi, $stateParams) {
+                return marinaApi.Organization.get({id: $stateParams.id});
+              }
+            ]
+          }
+        })
+        .state('app.organization_new', {
+          url: '/organizations/new',
+          templateUrl: 'views/app_organization_form.html',
+          controller: 'OrganizationCtrl',
+          resolve: {
+            organization: ['marinaApi',
+              function(marinaApi) {
+                return new marinaApi.Organization;
+              }
+            ]
+          }
+        })
         .state('app.repository_build_logs', {
           url: '/repos/:owner/:name/builds/:build_id/logs',
           templateUrl: 'views/app_repository_build_logs.html'

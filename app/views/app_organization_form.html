@@ -1,0 +1,62 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm">
+    <!-- main -->
+    <div class="col">
+        <!-- main header -->
+        <div class="bg-light lter b-b wrapper-md">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <h1 class="m-n font-thin h3 text-black">{{organization.name}}</h1>
+                </div>
+            </div>
+        </div>
+        <!-- / main header -->
+
+        <!-- main wrapper -->
+        <div class="wrapper-md">
+            <!-- info -->
+            <div class="row">
+              <div class="col-md-6 p-l-xs p-r-xs">
+                  <div class="panel b-a">
+                      <div class="panel-heading b-b b-light">
+                        <h2 class="panel-title">Organization Data</h2>
+                      </div>
+                      <div class="panel-body b-b b-light">
+                        <form role="form">
+
+                          <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" ng-model="organization.name" required="required" class="form-control"/>
+                          </div>
+
+                        </form>
+                      </div>
+                      <div class="panel-body b-b b-light">
+                        <button ng-click="save()" class="btn btn-primary">Save</button>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-md-6 p-l-xs p-r-xs">
+                  <div class="panel b-a">
+                      <div class="panel-heading b-b b-light">
+                        <h2 class="panel-title">API key</h2>
+                      </div>
+                      <div class="panel-body b-b b-light">
+                        <button ng-click="showApiKey()" ng-if="!api_key" class="btn btn-primary">
+                          Show API key
+                        </button>
+                        <button ng-click="hideApiKey()" ng-if="api_key" class="btn btn-danger">
+                          Hide API key
+                        </button>
+                        &nbsp;
+                        {{api_key}}
+                      </div>
+                  </div>
+              </div>
+            </div>
+            <!-- / info -->
+        </div>
+        <!-- / main wrapper -->
+    </div>
+    <!-- / main -->
+</div>
